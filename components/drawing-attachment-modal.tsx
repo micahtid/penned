@@ -147,7 +147,7 @@ export function DrawingAttachmentModal({ onSave, onClose }: DrawingAttachmentMod
         <header className="modal-header">
           <h2>Draw Something</h2>
           <button onClick={onClose} className="ghost-button square-btn">
-            <X size={18} />
+            <X size={16} />
           </button>
         </header>
 

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowBigLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { NoteId } from "@/lib/types";
@@ -95,7 +95,7 @@ export function NoteEditor({ noteId }: NoteEditorProps) {
         <section className="empty-state">
           <h1>Note not found.</h1>
           <Link href="/" className="ghost-link back-button" aria-label="Back" title="Back">
-            <ArrowBigLeft />
+            <ArrowLeft size={16} />
           </Link>
         </section>
       </main>
@@ -164,7 +164,7 @@ export function NoteEditor({ noteId }: NoteEditorProps) {
             aria-label="Back"
             title="Back"
           >
-            <ArrowBigLeft />
+            <ArrowLeft size={16} />
           </Link>
         </div>
       </header>

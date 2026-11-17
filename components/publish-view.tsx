@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowBigLeft, Type, Grid, Square, Image as ImageIcon, X, Pencil, GripVertical, Layers, Sticker, Brush, Eraser } from "lucide-react";
+import { ArrowLeft, AlignJustify, Grid3x3, Square, Image as ImageIcon, Pencil, Trash2, GripVertical, Layers, Sticker, Brush, Eraser } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import type { Attachment, NoteId, PaperStyle } from "@/lib/types";
@@ -215,7 +215,7 @@ export function PublishView({ noteId }: PublishViewProps) {
         <section className="empty-state">
           <h1>Note not found.</h1>
           <Link href="/" className="ghost-link back-button" aria-label="Back" title="Back">
-            <ArrowBigLeft />
+            <ArrowLeft size={16} />
           </Link>
         </section>
       </main>
@@ -232,7 +232,7 @@ export function PublishView({ noteId }: PublishViewProps) {
         </div>
         <div className="header-actions">
           <Link href={`/notes/${noteId}`} className="ghost-link back-button" aria-label="Back to editor" title="Back to Editor">
-            <ArrowBigLeft />
+            <ArrowLeft size={16} />
           </Link>
         </div>
       </header>
@@ -359,7 +359,7 @@ export function PublishView({ noteId }: PublishViewProps) {
                       className={`style-btn ${paperStyle === s ? "active" : ""}`}
                       onClick={() => setPaperStyle(s)}
                     >
-                      {s === "plain" ? <Square size={18} /> : s === "lined" ? <Type size={18} /> : <Grid size={18} />}
+                      {s === "plain" ? <Square size={16} /> : s === "lined" ? <AlignJustify size={16} /> : <Grid3x3 size={16} />}
                       <span>{s.charAt(0).toUpperCase() + s.slice(1)}</span>
                     </button>
                   ))}
@@ -429,7 +429,7 @@ export function PublishView({ noteId }: PublishViewProps) {
                 <div className="layers-panel">
                   {attachments.length === 0 ? (
                     <div className="layers-empty">
-                      <Layers size={24} />
+                      <Layers size={20} />
                       <p>No Images Yet</p>
                     </div>
                   ) : (
@@ -469,7 +469,7 @@ export function PublishView({ noteId }: PublishViewProps) {
                               title="Delete"
                               aria-label="Delete layer"
                             >
-                              <X size={14} />
+                              <Trash2 size={14} />
                             </button>
                           </div>
                         </div>

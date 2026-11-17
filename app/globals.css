@@ -185,9 +185,8 @@ h2 {
 .field-label {
   display: block;
   margin: 0 0 var(--gap-md);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.05em;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
   color: var(--text-secondary);
 }
 
@@ -235,12 +234,21 @@ h2 {
 
 .empty-state,
 .missing-card {
-  width: min(480px, 100%);
-  padding: 40px;
+  width: min(440px, 100%);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-xl);
   text-align: center;
   background: var(--bg-default);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-strong);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+}
+
+.empty-state p,
+.missing-card p {
+  margin: 0;
 }
 
 .login-shell {
@@ -486,7 +494,7 @@ h2 {
 
 .notes-grid {
   display: grid;
-  gap: var(--gap-xl);
+  gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
@@ -497,27 +505,66 @@ h2 {
 }
 
 .note-card {
-  padding: var(--p-2xl);
+  padding: 20px;
   background: var(--bg-default);
   border-radius: var(--radius-xl);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow-subtle);
-  transition: box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-md);
+  gap: var(--gap-xl);
   cursor: default;
-  min-height: 200px;
+  min-height: 188px;
 }
 
 .note-card:hover {
   border-color: var(--line-strong);
 }
 
+.note-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .note-card-body h2 {
-  margin-bottom: 2px;
   overflow-wrap: anywhere;
   min-width: 0;
+}
+
+/* Card actions sit at the bottom and are smaller than page-level buttons */
+.note-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.note-card-actions .ghost-link,
+.note-card-actions .icon-button {
+  height: 32px;
+}
+
+.note-card-actions .ghost-link {
+  padding: 0 var(--p-lg);
+}
+
+.note-card-actions .icon-button {
+  width: 32px;
+  flex-basis: 32px;
+  color: var(--text-secondary);
+}
+
+.note-card-actions .icon-button:hover {
+  color: var(--text-primary);
+}
+
+.note-card-actions .icon-button--danger:hover {
+  color: #c1493a;
+}
+
+.note-card-actions .icon-button > svg {
+  width: 15px;
+  height: 15px;
 }
 
 .note-snippet {
@@ -743,6 +790,12 @@ h2 {
   line-height: 1.7;
 }
 
+/* Icons: one stroke weight everywhere so every Lucide icon looks like one set */
+svg.lucide {
+  stroke-width: 1.75;
+  flex-shrink: 0;
+}
+
 /* Buttons */
 .primary-button,
 .primary-link,
@@ -802,8 +855,8 @@ h2 {
 }
 
 .back-button svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 /* Status & Pills */
@@ -834,8 +887,8 @@ h2 {
 /* Drawing & Character Specifics */
 .character-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+  gap: 6px;
 }
 
 .character-chip {
@@ -846,8 +899,9 @@ h2 {
   border-radius: var(--radius-md);
   background: var(--bg-default);
   font-family: var(--font-body), sans-serif;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
+  font-size: var(--fs-lg);
+  color: var(--text-primary);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   cursor: pointer;
 }
 
@@ -856,18 +910,17 @@ h2 {
   background: var(--bg-subtle);
 }
 
+/* Same soft green as the Live chip on the dashboard */
 .character-chip.saved {
-  background: #eefdf5;
-  border-color: #86efac;
-  color: #166534;
+  background: #f1f7f3;
+  border-color: rgba(47, 122, 82, 0.14);
+  color: #2f7a52;
 }
-
 
 .character-chip.active {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
-  box-shadow: var(--shadow-soft);
   z-index: 2;
 }
 
@@ -881,12 +934,11 @@ h2 {
 .drawing-pad canvas {
   width: min(100%, 420px);
   height: auto;
-  margin-top: 18px;
+  margin-top: 16px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: white;
   touch-action: none;
-  box-shadow: var(--shadow-subtle);
 }
 
 .paper-sheet {
@@ -1275,9 +1327,8 @@ h2 {
   width: 100%;
   min-height: 500px;
   background: var(--bg-default);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
   padding: 40px;
 }
 
@@ -1388,7 +1439,7 @@ h2 {
 .manager-content {
   display: grid;
   grid-template-columns: minmax(400px, 1.2fr) 1.8fr;
-  gap: 48px;
+  gap: 40px;
   align-items: start;
 }
 
@@ -1398,13 +1449,13 @@ h2 {
 
 .active-character-card {
   background: var(--bg-default);
-  padding: 32px;
-  border-radius: var(--radius-2xl);
+  padding: 24px;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
+  gap: 20px;
   width: 100%;
 }
 
@@ -1416,8 +1467,8 @@ h2 {
 
 .drawing-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 24px;
+  gap: var(--gap-md);
+  margin-top: 16px;
   width: 100%;
   justify-content: flex-start;
 }
@@ -1433,6 +1484,14 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+/* Matches the section labels on the publish page */
+.group-label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text-secondary);
+  letter-spacing: 0;
 }
 
 .publish-page.is-editing-attachment .publish-preview {
@@ -1537,11 +1596,10 @@ h2 {
 
 .layer-item:hover {
   border-color: var(--line-strong);
-  box-shadow: var(--shadow-subtle);
 }
 
 .layer-item.active {
-  border-color: var(--accent);
+  border-color: rgba(0, 0, 0, 0.28);
   background: var(--accent-soft);
 }
 
@@ -1618,7 +1676,8 @@ h2 {
   gap: 4px;
   opacity: 0;
   transform: scale(0.8);
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   pointer-events: auto;
   z-index: 20;
 }
@@ -1682,8 +1741,8 @@ h2 {
 
 .control-label {
   display: block;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
   color: var(--text-secondary);
   margin-bottom: 8px;
 }
@@ -1728,7 +1787,7 @@ h2 {
 /* Publish Page & Paper Styles */
 .publish-layout {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 40px;
   align-items: start;
 }
@@ -1736,13 +1795,17 @@ h2 {
 .publish-controls {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 
 .control-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+}
+
+.control-section .field-label {
+  margin-bottom: 0;
 }
 
 .style-picker {
@@ -1785,8 +1848,8 @@ h2 {
 }
 
 .style-btn span {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
 }
 
 .style-btn:hover {
@@ -1807,31 +1870,32 @@ h2 {
 .color-picker {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--gap-md);
 }
 
 .color-btn {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
+  outline: 1px solid transparent;
+  outline-offset: 2px;
   cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: outline-color 0.2s ease;
 }
 
 .color-btn:hover {
-  transform: scale(1.1);
-  border-color: var(--line-strong);
+  outline-color: var(--line-strong);
 }
 
+/* Selected swatch: a thin ring with a small gap around it */
 .color-btn.active {
-  border-color: var(--line-strong);
-  box-shadow: 0 0 0 2px var(--accent-soft);
+  outline-color: var(--text-secondary);
 }
 
 .tool-btn {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-full);
   border: 1px solid var(--line);
   background: var(--bg-default);
@@ -1933,36 +1997,34 @@ h2 {
   gap: 10px;
 }
 
-/* Status pills used on dashboard cards and the publish view */
+/* Note status on dashboard cards: a small quiet chip that matches the
+   card's own border and radius */
 .status-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 0.7rem;
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 4px;
-  line-height: 1.4;
-  width: fit-content;
+  flex-shrink: 0;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--bg-subtle);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  color: var(--text-secondary);
 }
 
 .status-badge--live {
-  background: #dcfce7;
-  color: #15803d;
-  border: 1px solid #86efac;
-}
-
-.status-badge--draft {
-  background: var(--bg-subtle);
-  color: var(--text-secondary);
+  background: #f1f7f3;
+  border-color: rgba(47, 122, 82, 0.14);
+  color: #2f7a52;
 }
 
 .note-card-heading {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--gap-xl);
 }
 
 /* Locked editor while a note is live. Readers can see it but not edit */

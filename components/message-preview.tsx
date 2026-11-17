@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { Edit2, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import type { Attachment, GlyphMap, PaperStyle } from "@/lib/types";
 
 type MessagePreviewProps = {
@@ -970,7 +970,7 @@ export function MessagePreview({
                       }}
                       title="Edit"
                     >
-                      <Edit2 size={14} />
+                      <Pencil size={14} />
                     </button>
                     <button 
                       type="button" 

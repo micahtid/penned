@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowBigLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { CHARACTERS } from "@/lib/alphabet";
@@ -81,7 +81,7 @@ export function CharacterSetManager() {
             Restart
           </button>
           <Link href="/" className="ghost-link back-button" aria-label="Back" title="Back">
-            <ArrowBigLeft />
+            <ArrowLeft size={16} />
           </Link>
         </div>
       </header>

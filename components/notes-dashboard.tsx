@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Check, Link2, Eraser, X } from "lucide-react";
+import { Check, Link2, Trash2, X } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { CHARACTERS } from "@/lib/alphabet";
@@ -187,65 +187,63 @@ export function NotesDashboard() {
                   </p>
                 </div>
 
-                <div className="panel-row" style={{ justifyContent: "space-between", marginTop: "auto" }}>
-                  <div style={{ display: "flex", gap: "8px" }}>
-                    {isLive ? (
-                      <button
-                        type="button"
-                        className="ghost-link"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setManagingNoteId(note._id);
-                        }}
-                      >
-                        Edit
-                      </button>
-                    ) : (
-                      <Link
-                        href={`/notes/${note._id}`}
-                        className="ghost-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Edit
-                      </Link>
-                    )}
-                    {isLive && (
-                      <button
-                        type="button"
-                        className="icon-button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          void handleCopyCardLink(note);
-                        }}
-                        title={
-                          copiedCardId === note._id ? "Link Copied" : "Copy Link"
-                        }
-                        aria-label={
-                          copiedCardId === note._id
-                            ? "Link copied"
-                            : `Copy link for ${note.title}`
-                        }
-                      >
-                        {copiedCardId === note._id ? (
-                          <Check size={16} />
-                        ) : (
-                          <Link2 size={16} />
-                        )}
-                      </button>
-                    )}
+                <div className="note-card-actions">
+                  {isLive ? (
                     <button
                       type="button"
-                      className="icon-button icon-button--danger"
+                      className="ghost-link"
                       onClick={(e) => {
                         e.stopPropagation();
-                        void handleDelete(note);
+                        setManagingNoteId(note._id);
                       }}
-                      title="Delete"
-                      aria-label={`Delete ${note.title}`}
                     >
-                      <Eraser size={16} />
+                      Edit
                     </button>
-                  </div>
+                  ) : (
+                    <Link
+                      href={`/notes/${note._id}`}
+                      className="ghost-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Edit
+                    </Link>
+                  )}
+                  {isLive && (
+                    <button
+                      type="button"
+                      className="icon-button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        void handleCopyCardLink(note);
+                      }}
+                      title={
+                        copiedCardId === note._id ? "Link Copied" : "Copy Link"
+                      }
+                      aria-label={
+                        copiedCardId === note._id
+                          ? "Link copied"
+                          : `Copy link for ${note.title}`
+                      }
+                    >
+                      {copiedCardId === note._id ? (
+                        <Check size={16} />
+                      ) : (
+                        <Link2 size={16} />
+                      )}
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className="icon-button icon-button--danger"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      void handleDelete(note);
+                    }}
+                    title="Delete"
+                    aria-label={`Delete ${note.title}`}
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </article>
             );
@@ -271,7 +269,7 @@ export function NotesDashboard() {
               title="Close"
               aria-label="Close"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
 
             <div className="manage-link-info">
