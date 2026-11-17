@@ -293,18 +293,6 @@ h2 {
   margin: 12px 0;
 }
 
-/* Demo video placeholder. Width is also capped by viewport height
-   (16:9, minus room for the hero text) so hero + video always fit
-   on one screen without scrolling */
-.login-video {
-  margin-top: 36px;
-  width: min(640px, 100%, calc((100vh - 320px) * 16 / 9));
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: var(--radius-2xl);
-  box-shadow: none;
-}
-
 /* Decorative cards (letters + envelopes) scattered across the screen */
 .decor-card {
   position: absolute;

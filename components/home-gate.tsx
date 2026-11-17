@@ -277,9 +277,7 @@ export function HomeGate() {
           >
             <FcGoogle size={18} />
             <span>Continue with Google</span>
-          </button>
-          <div className="login-video" aria-label="Product demo video" />
-        </div>
+          </button>        </div>
       </main>
     );
   }
